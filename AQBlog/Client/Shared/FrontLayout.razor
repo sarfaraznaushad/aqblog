@@ -1,0 +1,135 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="_themeManager.Theme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="_themeManager.AppBarElevation">
+
+        <MudHidden Breakpoint="Breakpoint.MdAndUp">
+            <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        </MudHidden>
+
+        <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
+            <MudText Typo="Typo.subtitle2">Home</MudText>
+        </MudHidden>
+        <MudAutocomplete T="string"  @bind-Value="value2" SearchFunc="@AutoComplete"
+                         ResetValueOnEmptyText="@resetValueOnEmptyText" Variant="Variant.Outlined"
+                         AdornmentIcon="@Icons.Material.Filled.Search"   Margin="Margin.Dense" />
+
+        <MudAppBarSpacer />
+        <MudMenu Icon="@Icons.Material.Outlined.Translate" Color="Color.Inherit" Direction="Direction.Bottom" OffsetY="true" Dense="true">
+            <MudMenuItem>English</MudMenuItem>
+            <MudMenuItem>Swedish</MudMenuItem>
+            <MudMenuItem>Old Norse</MudMenuItem>
+        </MudMenu>
+        <MudMenu Icon="@Icons.Material.Outlined.Widgets" Color="Color.Inherit" Direction="Direction.Bottom" OffsetY="true" Dense="true">
+            <MudMenuItem Link="http://alqubatech.in/">AQ</MudMenuItem>
+            <MudMenuItem Link="https://github.com/sarfaraznaushad/aqblog">Source Code</MudMenuItem>
+        </MudMenu>
+        <MudMenu Direction="Direction.Left" OffsetX="true" Dense="true" Class="mt-1 ml-4">
+            <ActivatorContent>
+                <MudAvatar Image="01.jpeg" />
+            </ActivatorContent>
+            <ChildContent>
+                <Header Class="mt-n2" />
+                <MudDivider Class="mb-2" />
+                <MudListItem Text="Account" Icon="@Icons.Material.Outlined.Person" Href="/account" />
+                <MudListItem Text="Logout" Icon="@Icons.Material.Outlined.Login" Href="/login" />
+            </ChildContent>
+        </MudMenu>
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent>
+        <MudHidden Breakpoint="Breakpoint.SmAndDown">
+            <MudToolBar DisableGutters="true">
+                <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" OnClick="@((e) => DrawerToggle())" Class="ml-3" />
+                <MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+                <MudToolBarSpacer />
+                <MudButton Variant="Variant.Text" Link="http://alqubatech.in/" Style="color:#594AE2;">AQ</MudButton>
+                <MudButton Variant="Variant.Text" Link="https://github.com/sarfaraznaushad/aqblog" Style="color:#424242;" Class="mr-3">Source Code</MudButton>
+            </MudToolBar>
+        </MudHidden>
+        <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@*<MudThemeManagerButton OnClick="@((e) => OpenThemeManager(true))" />
+    <MudThemeManager Open="_themeManagerOpen" OpenChanged="OpenThemeManager" Theme="_themeManager" ThemeChanged="UpdateTheme" />*@
+
+
+@code {
+    private bool resetValueOnEmptyText;
+    private string value2;
+
+    private ThemeManagerTheme _themeManager = new ThemeManagerTheme();
+
+    public bool _drawerOpen = true;
+    public bool _themeManagerOpen = false;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    void OpenThemeManager(bool value)
+    {
+        _themeManagerOpen = value;
+    }
+
+    void UpdateTheme(ThemeManagerTheme value)
+    {
+        _themeManager = value;
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        _themeManager.Theme = new MudBlazorAdminDashboard();
+        _themeManager.DrawerClipMode = DrawerClipMode.Always;
+        _themeManager.FontFamily = "Montserrat";
+        _themeManager.DefaultBorderRadius = 3;
+        _themeManager.AppBarElevation = 1;
+        _themeManager.DrawerElevation = 25;
+        StateHasChanged();
+    }
+
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+{
+        new BreadcrumbItem("Dashboard", href: "#"),
+    };
+
+    private string[] states =
+  {
+        "Alabama", "Alaska", "American Samoa", "Arizona",
+        "Arkansas", "California", "Colorado", "Connecticut",
+        "Delaware", "District of Columbia", "Federated States of Micronesia",
+        "Florida", "Georgia", "Guam", "Hawaii", "Idaho",
+        "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
+        "Louisiana", "Maine", "Marshall Islands", "Maryland",
+        "Massachusetts", "Michigan", "Minnesota", "Mississippi",
+        "Missouri", "Montana", "Nebraska", "Nevada",
+        "New Hampshire", "New Jersey", "New Mexico", "New York",
+        "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio",
+        "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico",
+        "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
+        "Texas", "Utah", "Vermont", "Virgin Island", "Virginia",
+        "Washington", "West Virginia", "Wisconsin", "Wyoming",
+    };
+
+    private async Task<IEnumerable<string>> AutoComplete(string value)
+    {
+        // In real life use an asynchronous function for fetching data from an api.
+        await Task.Delay(5);
+
+        // if text is null or empty, don't return values (drop-down will not open)
+        if (string.IsNullOrEmpty(value))
+            return new string[0];
+        return states.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+    }
+}

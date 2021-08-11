@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace AQBlog.Client.Pages
+namespace AQBlog.Client.Shared
 {
     #line hidden
     using System;
@@ -103,15 +103,21 @@ using MudBlazor.ThemeManager;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(FrontLayout))]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class LoginLayout : LayoutComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 17 "F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\Shared\LoginLayout.razor"
+       
+    private MudTheme _currentTheme = new MudBlazorAdminDashboard();
+
+#line default
+#line hidden
+#nullable disable
     }
 }
 #pragma warning restore 1591

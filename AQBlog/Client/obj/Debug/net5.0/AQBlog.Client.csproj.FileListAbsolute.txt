@@ -649,3 +649,11 @@ F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\RazorDecl
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\Razor\Pages\About.razor.g.cs
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\Razor\Pages\Category.razor.g.cs
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\Razor\Pages\Contact.razor.g.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Login.razor.g.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\RazorDeclaration\Shared\LoginLayout.razor.g.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\Razor\Pages\Login.razor.g.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\Razor\Shared\LoginLayout.razor.g.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Administrator\Dashboard.razor.g.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\Razor\Pages\Administrator\Dashboard.razor.g.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\RazorDeclaration\Shared\FrontLayout.razor.g.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\obj\Debug\net5.0\Razor\Shared\FrontLayout.razor.g.cs

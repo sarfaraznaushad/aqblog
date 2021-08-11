@@ -198,12 +198,12 @@
       "netstandard.dll": "sha256-zDt6ZaAbtKh1rxzQ7CMtlli234CuRfzZU6Fe9cc2FG4=",
       "System.Private.CoreLib.dll": "sha256-KRDEW\/5qbC0\/9M5IbDGIAM1sKCutWHyq9oLl8WW0c3I=",
       "AQBlog.Shared.dll": "sha256-9RauMxFB2X59NNU3tmOCdtXJ+fG6OjKnMaN9iaM63go=",
-      "AQBlog.Client.dll": "sha256-d+wOHIzheybNz8ZGH3NDu06GbVoxfMzOmmrrh\/3P1hU="
+      "AQBlog.Client.dll": "sha256-ssea0G8WpDCzanGH6hRo7v00T27U2wFrmyyLITBCx6E="
     },
     "lazyAssembly": null,
     "pdb": {
       "AQBlog.Shared.pdb": "sha256-YiHltORVAfyCA4N5TYKcQF9O+zZ7fk\/MOJl2g0ftKYc=",
-      "AQBlog.Client.pdb": "sha256-Y6kJfKtQ0pHtO1cKlXKAn2c27qx7unmO5gazfKnkSvU="
+      "AQBlog.Client.pdb": "sha256-aeNN2z4UetWFnL7levsL3qHkyzy1JrP5YyFxRuQDAAg="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-\/mwFhTTF4Kca8PG7G6rxaGqCueWH9XbWEIK1Fm8GbFg=",
