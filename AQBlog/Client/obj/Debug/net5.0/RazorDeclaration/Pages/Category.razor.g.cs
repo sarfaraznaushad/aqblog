@@ -103,7 +103,20 @@ using MudBlazor.ThemeManager;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/category")]
+#nullable restore
+#line 1 "F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\Pages\Category.razor"
+using AQBlog.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\Pages\Category.razor"
+using System.Threading;
+
+#line default
+#line hidden
+#nullable disable
     public partial class Category : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -111,6 +124,21 @@ using MudBlazor.ThemeManager;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 25 "F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\Pages\Category.razor"
+       
+    private CategoryMetaData[] categories;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var details = await Http.GetFromJsonAsync<CategoryMetaData[]>("blog");
+        categories = details;
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -1,0 +1,9 @@
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\bin\Debug\netcoreapp3.1\AQBlog.Model.deps.json
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\bin\Debug\netcoreapp3.1\AQBlog.Model.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\bin\Debug\netcoreapp3.1\AQBlog.Model.pdb
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\netcoreapp3.1\AQBlog.Model.AssemblyInfoInputs.cache
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\netcoreapp3.1\AQBlog.Model.AssemblyInfo.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\netcoreapp3.1\AQBlog.Model.csproj.CoreCompileInputs.cache
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\netcoreapp3.1\AQBlog.Model.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\netcoreapp3.1\AQBlog.Model.pdb
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\netcoreapp3.1\AQBlog.Model.csprojAssemblyReference.cache

@@ -103,7 +103,6 @@ using MudBlazor.ThemeManager;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(FrontLayout))]
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {

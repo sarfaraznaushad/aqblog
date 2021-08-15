@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2ZqHYC9IdKx7+l29aQI+0ZPvP8XehboMi64bdOwmKi1G7GPATH20wzzDVNdAU+Spuu/NkNaCaDRMWkQ5ae4MYw==",
+  "dgSpecHash": "mBZ/dgnuQDMCwCHIuo5O7TBonH77dBFqFweObB9rBkQF8Nprbt2hMErukee/W5jlfVP+gC5aIsx4BoqUe4A/ZA==",
   "success": true,
   "projectFilePath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Client\\AQBlog.Client.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\Sarfaraz Khan\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Sarfaraz Khan\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
     "C:\\Users\\Sarfaraz Khan\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
+    "C:\\Users\\Sarfaraz Khan\\.nuget\\packages\\microsoft.extensions.http\\5.0.0\\microsoft.extensions.http.5.0.0.nupkg.sha512",
     "C:\\Users\\Sarfaraz Khan\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\Sarfaraz Khan\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Sarfaraz Khan\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",

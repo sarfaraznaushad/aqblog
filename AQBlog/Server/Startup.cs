@@ -1,7 +1,11 @@
+using AQBlog.Domain;
+using AQBlog.Domain.Abstract;
+using AQBlog.Domain.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +29,22 @@ namespace AQBlog.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+            //services.AddCors(options => {
+            //    options.AddDefaultPolicy(builder => {
+            //        builder.WithOrigins("*", "*","*");
+            //    });
+            //});
+
+            services.AddDbContext<AQContext>(item => item.UseSqlServer(Configuration.GetConnectionString("AQContext")));
+
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient(typeof(IParentRepository<>), typeof(ParentRepository<>));
+
+            services.AddTransient(typeof(IBlogDetailRepository), typeof(BlogDetailRepository));
+            services.AddTransient(typeof(ICategoryRepository), typeof(CategoryRepository));
+            services.AddTransient(typeof(ICommentRepository), typeof(CommentRepository));
+            services.AddTransient(typeof(IMasterDetailRepository), typeof(MasterDetailRepository));
+            services.AddTransient(typeof(IUserDetailRepository), typeof(UserDetailRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +67,7 @@ namespace AQBlog.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,0 +1,11 @@
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\bin\Debug\net5.0\AQBlog.Model.deps.json
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\bin\Debug\net5.0\AQBlog.Model.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\bin\Debug\net5.0\ref\AQBlog.Model.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\bin\Debug\net5.0\AQBlog.Model.pdb
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\net5.0\AQBlog.Model.GeneratedMSBuildEditorConfig.editorconfig
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\net5.0\AQBlog.Model.AssemblyInfoInputs.cache
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\net5.0\AQBlog.Model.AssemblyInfo.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\net5.0\AQBlog.Model.csproj.CoreCompileInputs.cache
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\net5.0\AQBlog.Model.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\net5.0\ref\AQBlog.Model.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Model\AQBlog.Model\obj\Debug\net5.0\AQBlog.Model.pdb

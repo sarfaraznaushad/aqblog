@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[5.0.2, )"
             },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "MudBlazor": {
               "target": "Package",
               "version": "[5.1.0, )"
@@ -96,6 +100,132 @@
         }
       }
     },
+    "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Domain\\AQBlog.Domain\\AQBlog.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Domain\\AQBlog.Domain\\AQBlog.Domain.csproj",
+        "projectName": "AQBlog.Domain",
+        "projectPath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Domain\\AQBlog.Domain\\AQBlog.Domain.csproj",
+        "packagesPath": "C:\\Users\\Sarfaraz Khan\\.nuget\\packages\\",
+        "outputPath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Domain\\AQBlog.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sarfaraz Khan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Model\\AQBlog.Model\\AQBlog.Model.csproj": {
+                "projectPath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Model\\AQBlog.Model\\AQBlog.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Model\\AQBlog.Model\\AQBlog.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Model\\AQBlog.Model\\AQBlog.Model.csproj",
+        "projectName": "AQBlog.Model",
+        "projectPath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Model\\AQBlog.Model\\AQBlog.Model.csproj",
+        "packagesPath": "C:\\Users\\Sarfaraz Khan\\.nuget\\packages\\",
+        "outputPath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Model\\AQBlog.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sarfaraz Khan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Server\\AQBlog.Server.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -123,6 +253,12 @@
               "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Client\\AQBlog.Client.csproj": {
                 "projectPath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Client\\AQBlog.Client.csproj"
               },
+              "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Domain\\AQBlog.Domain\\AQBlog.Domain.csproj": {
+                "projectPath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Domain\\AQBlog.Domain\\AQBlog.Domain.csproj"
+              },
+              "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Model\\AQBlog.Model\\AQBlog.Model.csproj": {
+                "projectPath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Model\\AQBlog.Model\\AQBlog.Model.csproj"
+              },
               "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Shared\\AQBlog.Shared.csproj": {
                 "projectPath": "F:\\AlqubaTechBusiness\\CRM\\Blazor\\aqblog\\AQBlog\\Shared\\AQBlog.Shared.csproj"
               }
@@ -142,6 +278,20 @@
             "Microsoft.AspNetCore.Components.WebAssembly.Server": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
             },
             "MudBlazor": {
               "target": "Package",

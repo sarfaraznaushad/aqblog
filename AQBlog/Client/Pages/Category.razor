@@ -1,6 +1,33 @@
-﻿@page "/category"
-<h3>Category</h3>
+﻿@using AQBlog.Shared
+@using System.Threading
+@inject HttpClient Http
+
+<MudText Typo="Typo.h5"> Categories</MudText>
+<MudDivider Class="mt-2" />
+@if (categories == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MudNavMenu>
+        @foreach (var cat in categories)
+        {
+            <MudNavLink Href="@cat.Slug">
+                <MudText Typo="Typo.subtitle1">@cat.CategoryName </MudText>
+            </MudNavLink>
+            <MudDivider />
+        }
+    </MudNavMenu>
+
+}
 
 @code {
+    private CategoryMetaData[] categories;
 
+    protected override async Task OnInitializedAsync()
+    {
+        var details = await Http.GetFromJsonAsync<CategoryMetaData[]>("blog");
+        categories = details;
+    }
 }

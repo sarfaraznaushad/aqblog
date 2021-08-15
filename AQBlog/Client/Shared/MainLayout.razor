@@ -44,7 +44,7 @@
         <NavMenu />
     </MudDrawer>
     <MudMainContent>
-        <MudHidden Breakpoint="Breakpoint.SmAndDown">
+        @*<MudHidden Breakpoint="Breakpoint.SmAndDown">
             <MudToolBar DisableGutters="true">
                 <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" OnClick="@((e) => DrawerToggle())" Class="ml-3" />
                 <MudBreadcrumbs Items="_items"></MudBreadcrumbs>
@@ -52,7 +52,7 @@
                 <MudButton Variant="Variant.Text" Link="http://alqubatech.in/" Style="color:#594AE2;">AQ</MudButton>
                 <MudButton Variant="Variant.Text" Link="https://github.com/sarfaraznaushad/aqblog" Style="color:#424242;" Class="mr-3">Source Code</MudButton>
             </MudToolBar>
-        </MudHidden>
+        </MudHidden>*@
         <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
             @Body
         </MudContainer>

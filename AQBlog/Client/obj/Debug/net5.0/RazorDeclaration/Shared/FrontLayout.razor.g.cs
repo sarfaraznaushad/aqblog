@@ -111,25 +111,13 @@ using MudBlazor.ThemeManager;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 66 "F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\Shared\FrontLayout.razor"
+#line 45 "F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Client\Shared\FrontLayout.razor"
        
     private bool resetValueOnEmptyText;
     private string value2;
 
     private ThemeManagerTheme _themeManager = new ThemeManagerTheme();
-
-    public bool _drawerOpen = true;
-    public bool _themeManagerOpen = false;
-
-    void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
-
-    void OpenThemeManager(bool value)
-    {
-        _themeManagerOpen = value;
-    }
+   
 
     void UpdateTheme(ThemeManagerTheme value)
     {
@@ -143,8 +131,9 @@ using MudBlazor.ThemeManager;
         _themeManager.DrawerClipMode = DrawerClipMode.Always;
         _themeManager.FontFamily = "Montserrat";
         _themeManager.DefaultBorderRadius = 3;
-        _themeManager.AppBarElevation = 1;
+        _themeManager.AppBarElevation = 0;
         _themeManager.DrawerElevation = 25;
+
         StateHasChanged();
     }
 

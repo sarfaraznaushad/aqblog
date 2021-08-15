@@ -103,7 +103,8 @@ using MudBlazor.ThemeManager;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/dashboard")]
+    [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(MainLayout))]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/auth/dashboard")]
     public partial class Dashboard : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

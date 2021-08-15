@@ -3,5 +3,7 @@
   <PropertyGroup>
     <RazorPage_SelectedScaffolderID>RazorComponentScaffolder</RazorPage_SelectedScaffolderID>
     <RazorPage_SelectedScaffolderCategoryPath>root/Common/RazorComponent</RazorPage_SelectedScaffolderCategoryPath>
+    <Controller_SelectedScaffolderID>RazorComponentScaffolder</Controller_SelectedScaffolderID>
+    <Controller_SelectedScaffolderCategoryPath>root/Common/RazorComponent</Controller_SelectedScaffolderCategoryPath>
   </PropertyGroup>
 </Project>

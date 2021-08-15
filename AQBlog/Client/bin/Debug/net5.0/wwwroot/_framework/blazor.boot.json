@@ -23,6 +23,7 @@
       "Microsoft.Extensions.FileProviders.Abstractions.dll": "sha256-aUKLFqSgB\/hwZc41dLVKoRSKRghShpfQPVMhoRzpz5M=",
       "Microsoft.Extensions.FileProviders.Physical.dll": "sha256-Cvhy7j568oPzBQKhakMhNkDr5tQBxE0LaY1wukd0Ll0=",
       "Microsoft.Extensions.FileSystemGlobbing.dll": "sha256-xrpMDo35bgwz\/m\/kwUvL9SAOxyEgSSwO57RiuhILHgI=",
+      "Microsoft.Extensions.Http.dll": "sha256-yUMvQwAOesiz+yHxElu\/ObK7gQIqcSR7vktOISpntaA=",
       "Microsoft.Extensions.Logging.dll": "sha256-VlsKv5zXgdK0MrYHXr9XlUCXwuwNI7AUI\/C1PEFXcz4=",
       "Microsoft.Extensions.Logging.Abstractions.dll": "sha256-9UNtwDMFW86VtnTtJFk9xcc1hCnXFGXccFv3SkbgYy0=",
       "Microsoft.Extensions.Options.dll": "sha256-YfK6Zl0RmlJUqBJD7Khy7u4HEW2DRne0VSiqA6Yqs0U=",
@@ -197,13 +198,13 @@
       "mscorlib.dll": "sha256-pfURHvguun0aGHBikgqj1tcIC9yVwDja+omBjH9K0WU=",
       "netstandard.dll": "sha256-zDt6ZaAbtKh1rxzQ7CMtlli234CuRfzZU6Fe9cc2FG4=",
       "System.Private.CoreLib.dll": "sha256-KRDEW\/5qbC0\/9M5IbDGIAM1sKCutWHyq9oLl8WW0c3I=",
-      "AQBlog.Shared.dll": "sha256-9RauMxFB2X59NNU3tmOCdtXJ+fG6OjKnMaN9iaM63go=",
-      "AQBlog.Client.dll": "sha256-ssea0G8WpDCzanGH6hRo7v00T27U2wFrmyyLITBCx6E="
+      "AQBlog.Shared.dll": "sha256-aWnsqs5vLLSLMWw5MRxxOIENpuD+hwNyWmMbwovQv2U=",
+      "AQBlog.Client.dll": "sha256-m4w6jFg2ZNblfTrJCzX+sLbzQm14a1f2mY1naNssCn8="
     },
     "lazyAssembly": null,
     "pdb": {
-      "AQBlog.Shared.pdb": "sha256-YiHltORVAfyCA4N5TYKcQF9O+zZ7fk\/MOJl2g0ftKYc=",
-      "AQBlog.Client.pdb": "sha256-aeNN2z4UetWFnL7levsL3qHkyzy1JrP5YyFxRuQDAAg="
+      "AQBlog.Shared.pdb": "sha256-ZOoRV4rEuPNgtZzaS4A07tLwcSSy0sBo\/trgz3ZTkEk=",
+      "AQBlog.Client.pdb": "sha256-lQKsbkOS2TwYh3lugricGjcoP4zGqLQuwAlADwrfKi0="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-\/mwFhTTF4Kca8PG7G6rxaGqCueWH9XbWEIK1Fm8GbFg=",

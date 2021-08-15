@@ -2,7 +2,6 @@ F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Shared\bin\Debug\net5.0\AQBlog.Sh
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Shared\bin\Debug\net5.0\AQBlog.Shared.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Shared\bin\Debug\net5.0\ref\AQBlog.Shared.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Shared\bin\Debug\net5.0\AQBlog.Shared.pdb
-F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Shared\obj\Debug\net5.0\AQBlog.Shared.csprojAssemblyReference.cache
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Shared\obj\Debug\net5.0\AQBlog.Shared.GeneratedMSBuildEditorConfig.editorconfig
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Shared\obj\Debug\net5.0\AQBlog.Shared.AssemblyInfoInputs.cache
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Shared\obj\Debug\net5.0\AQBlog.Shared.AssemblyInfo.cs

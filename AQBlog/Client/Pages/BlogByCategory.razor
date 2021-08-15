@@ -1,0 +1,14 @@
+﻿@page   "/{Category}/{Page:int?}"
+<h3>BlogByCategory</h3>
+
+<h1>@Category</h1>
+<h1>@Page</h1>
+
+@code {
+    [Parameter]
+    public String Category { get; set; }
+
+    [Parameter]
+    public Int32 Page { get; set; } = 1;
+
+}

@@ -1,0 +1,15 @@
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\bin\Debug\netcoreapp3.1\AQBlog.Domain.deps.json
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\bin\Debug\netcoreapp3.1\AQBlog.Domain.runtimeconfig.json
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\bin\Debug\netcoreapp3.1\AQBlog.Domain.runtimeconfig.dev.json
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\bin\Debug\netcoreapp3.1\AQBlog.Domain.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\bin\Debug\netcoreapp3.1\AQBlog.Domain.pdb
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\bin\Debug\netcoreapp3.1\AQBlog.Model.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\bin\Debug\netcoreapp3.1\AQBlog.Model.pdb
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\obj\Debug\netcoreapp3.1\AQBlog.Domain.csprojAssemblyReference.cache
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\obj\Debug\netcoreapp3.1\AQBlog.Domain.AssemblyInfoInputs.cache
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\obj\Debug\netcoreapp3.1\AQBlog.Domain.AssemblyInfo.cs
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\obj\Debug\netcoreapp3.1\AQBlog.Domain.csproj.CoreCompileInputs.cache
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\obj\Debug\netcoreapp3.1\AQBlog.Domain.csproj.CopyComplete
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\obj\Debug\netcoreapp3.1\AQBlog.Domain.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\obj\Debug\netcoreapp3.1\AQBlog.Domain.pdb
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Domain\AQBlog.Domain\obj\Debug\netcoreapp3.1\AQBlog.Domain.genruntimeconfig.cache
