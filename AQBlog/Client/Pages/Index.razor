@@ -1,10 +1,98 @@
 ﻿@page "/"
+@page "/{page:int}"
+@page "/{page:int}/{q}"
+@page "/{q}"
+@page "/category/{categoryid}/{category}"
+@page "/category/{categoryid}/{category}/{page:int}"
+
+@inject NavigationManager navigationManager
+
+@using AQBlog.Shared
+@inject IFrontService frontService
+@*@implements IDisposable*@
 
 
 
+@if (blogs == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    int i = 1;
+    @foreach (var blog in blogs)
+    {
+        <BlogView Blog="@blog" />
+        @if (i < blogs.Count())
+        {
+            <MudDivider></MudDivider>
+        }
+        i++;
+    }
+    <Pagination pageInfo="pagingInfo" PageClassesEnabled="true" PageClass="Paging" PageClassSelected="active"></Pagination>
+}
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+@code{
+    private List<BlogFrontDetailMetaData> blogs;
+    [Parameter]
+    public int page { get; set; }
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    [Parameter]
+    public string q { get; set; }
+
+    [Parameter]
+    public string category { get; set; }
+
+    [Parameter]
+    public string categoryid { get; set; }
+
+    PageInfo pagingInfo = new PageInfo();
+    BlogDetailPagingMetaData blogReq = new BlogDetailPagingMetaData();
+
+    //protected async override void OnInitialized()
+    //{
+    //    await CreatePagingInfo();
+    //    navigationManager.LocationChanged += NavigationManager_LocationChanged;
+    //}
+
+    //private async void NavigationManager_LocationChanged(object sender, LocationChangedEventArgs e)
+    //{
+    //    var url = e.Location;
+    //    page = 0;
+    //    await CreatePagingInfo();
+
+    //    // Parse URL for query string here
+    //}
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await CreatePagingInfo();
+    }
+
+    private async Task CreatePagingInfo()
+    {
+        int PageSize = 1;
+
+        // var q = navigationManager.QueryString("q");
+        blogReq = new BlogDetailPagingMetaData();
+        blogReq.PageNo = page > 0 ? (page - 1) : page;
+        blogReq.Search = q == null ? "" : q;
+        blogReq.PageSize = PageSize;
+        blogReq.CategoryId = categoryid;
+
+        var blogDetails = await frontService.GetBlogs(blogReq);
+
+        pagingInfo = new PageInfo();
+        page = page == 0 ? 1 : page;
+        pagingInfo.CurrentPage = page;
+        pagingInfo.TotalItems = blogDetails.TotalRecord;
+        pagingInfo.ItemsPerPage = PageSize;
+
+        blogs = blogDetails.Blogs;
+
+        StateHasChanged();
+    }
+
+    //void IDisposable.Dispose() => navigationManager.LocationChanged -= NavigationManager_LocationChanged;
+}

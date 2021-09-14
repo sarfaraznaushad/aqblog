@@ -1,4 +1,8 @@
 ﻿@inherits LayoutComponentBase
+@using AQBlog.Shared
+@inject IFrontService frontService
+@inject NavigationManager navigationManager
+@*@inject AppState AppState*@
 
 <MudThemeProvider Theme="_themeManager.Theme" />
 <MudDialogProvider />
@@ -7,23 +11,24 @@
 <MudLayout>
     <MudAppBar Elevation="_themeManager.AppBarElevation" Dense="true">
         <div>
-            <MudLink>
-                <MudAvatar Style="@($"color:#ffffff; font-weight: 800;")" Color="Color.Primary" Square="true">&lt;/&gt;</MudAvatar>
-                <MudAvatar Style="@($"color:#ffffff; font-weight: 800;")" Color="Color.Primary" Square="true"> AQ</MudAvatar>
+            <MudLink Href="/">
+                <img src="main-header-logo.svg" style="height:40px" alt="Logo" />
+                @*<MudAvatar Style="@($"color:#ffffff; font-weight: 800;")" Color="Color.Primary" Square="true">&lt;/&gt;</MudAvatar>
+                    <MudAvatar Style="@($"color:#ffffff; font-weight: 800;")" Color="Color.Primary" Square="true"> AQ</MudAvatar>*@
             </MudLink>
-            
+
         </div>
 
         <MudAppBarSpacer />
-        <MudAutocomplete T="string" @bind-Value="value2" SearchFunc="@AutoComplete"
+        <MudAutocomplete T="string" SearchFunc="@AutoComplete"
                          ResetValueOnEmptyText="@resetValueOnEmptyText" Variant="Variant.Outlined"
                          AdornmentIcon="@Icons.Material.Filled.Search" Margin="Margin.Dense"
-                         Style="@($"background:{Colors.Blue.Lighten1};")" />
+                         Style="@($"background:{Colors.Blue.Lighten1};")" ValueChanged="@OnValueChanged" />
 
         <MudAppBarSpacer />
     </MudAppBar>
-   
-    <MudMainContent>        
+
+    <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
             <MudGrid>
                 <MudItem xs="12" md="9" Class="pr-4">
@@ -34,10 +39,10 @@
                 <MudItem xs="12" md="3">
                     <MudPaper Class="d-block align-start py-2 px-1">
                         <AQBlog.Client.Pages.Category></AQBlog.Client.Pages.Category>
-                    </MudPaper>                   
+                    </MudPaper>
                 </MudItem>
             </MudGrid>
-          
+
         </MudContainer>
     </MudMainContent>
 </MudLayout>
@@ -47,7 +52,7 @@
     private string value2;
 
     private ThemeManagerTheme _themeManager = new ThemeManagerTheme();
-   
+
 
     void UpdateTheme(ThemeManagerTheme value)
     {
@@ -72,32 +77,23 @@
         new BreadcrumbItem("Dashboard", href: "#"),
     };
 
-    private string[] states =
-  {
-        "Alabama", "Alaska", "American Samoa", "Arizona",
-        "Arkansas", "California", "Colorado", "Connecticut",
-        "Delaware", "District of Columbia", "Federated States of Micronesia",
-        "Florida", "Georgia", "Guam", "Hawaii", "Idaho",
-        "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
-        "Louisiana", "Maine", "Marshall Islands", "Maryland",
-        "Massachusetts", "Michigan", "Minnesota", "Mississippi",
-        "Missouri", "Montana", "Nebraska", "Nevada",
-        "New Hampshire", "New Jersey", "New Mexico", "New York",
-        "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio",
-        "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico",
-        "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
-        "Texas", "Utah", "Vermont", "Virgin Island", "Virginia",
-        "Washington", "West Virginia", "Wisconsin", "Wyoming",
-    };
+    private void OnValueChanged(string val)
+    {
+        //this.AppState.SetVal(val);
+        navigationManager.NavigateTo("/" + val.Replace(' ','-'));
+    }
+
+
 
     private async Task<IEnumerable<string>> AutoComplete(string value)
     {
-        // In real life use an asynchronous function for fetching data from an api.
-        await Task.Delay(5);
-
         // if text is null or empty, don't return values (drop-down will not open)
         if (string.IsNullOrEmpty(value))
             return new string[0];
-        return states.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+
+        await Task.Delay(2000);
+        var titles = await frontService.SearchBlog(value);
+
+        return titles;
     }
 }

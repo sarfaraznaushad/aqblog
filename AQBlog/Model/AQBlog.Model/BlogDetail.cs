@@ -8,7 +8,7 @@ namespace AQBlog.Model
     {
         public BlogDetail()
         {
-            
+           
         }
 
         [MaxLength(150)]

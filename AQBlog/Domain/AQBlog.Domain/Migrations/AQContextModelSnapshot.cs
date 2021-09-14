@@ -92,6 +92,9 @@ namespace AQBlog.Domain.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -121,100 +124,109 @@ namespace AQBlog.Domain.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2238bc13-e988-485f-9bf6-206fb5020f21",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 955, DateTimeKind.Utc).AddTicks(7640),
+                            Id = "4dfbb6ba-bdd9-45ab-a37c-3785b0e57105",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 405, DateTimeKind.Utc).AddTicks(8752),
                             Description = "ASP.NET Frame work",
                             Icon = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 955, DateTimeKind.Utc).AddTicks(8864),
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 405, DateTimeKind.Utc).AddTicks(9990),
                             Title = "ASP.NET",
                             UrlSlug = "ASP-NET"
                         },
                         new
                         {
-                            Id = "d2b2452b-734c-47f9-9828-a8894f004770",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(699),
+                            Id = "8da3b728-0242-4286-a5dc-7eba46a66cb2",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1870),
                             Description = "C# course",
                             Icon = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(703),
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1873),
                             Title = "C#",
                             UrlSlug = "C-Sharp"
                         },
                         new
                         {
-                            Id = "aeaa024d-8d86-4459-a1b7-25bd4f69465d",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(708),
+                            Id = "eb5c3130-911e-4903-98fd-fcebe0d2a779",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1878),
                             Description = "Sql Course",
                             Icon = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(710),
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1879),
                             Title = "Sql",
                             UrlSlug = "Sql"
                         },
                         new
                         {
-                            Id = "dacad5a6-1f4a-42dc-83f5-32ad05dd2fbf",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(713),
+                            Id = "6c60d4a2-008d-4015-a23b-80e21c5530fc",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1893),
                             Description = "Java script basic info",
                             Icon = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(714),
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1894),
                             Title = "Java Script",
                             UrlSlug = "Java-Script"
                         },
                         new
                         {
-                            Id = "178781c6-035a-43a6-b04f-73c85313e191",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(725),
+                            Id = "e00c702d-beec-4554-88ab-fc0bb6d679d6",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1897),
                             Description = "Angular Details",
                             Icon = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(726),
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1898),
                             Title = "Angular",
                             UrlSlug = "Angular"
                         },
                         new
                         {
-                            Id = "363a9d86-d8f8-43c5-bd0f-f46ee53e44d3",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(729),
+                            Id = "3c9e274e-8c67-400d-acfc-60eb47c89b85",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1901),
                             Description = "Mongodb Details",
                             Icon = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(730),
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1902),
                             Title = "MongoDb",
                             UrlSlug = "MongoDb"
                         },
                         new
                         {
-                            Id = "67c6687e-47fd-4711-a184-4abafed43d5d",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(733),
+                            Id = "d48ddd93-5ebf-4fe0-9042-74541f16f576",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1905),
                             Description = "ASP.Net Mvc Basic Detail",
                             Icon = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(734),
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1906),
                             Title = "ASP.NET MVC",
                             UrlSlug = "ASP-NET-MVC"
                         },
                         new
                         {
-                            Id = "0e2ba2e5-fb3e-4706-8973-89317fdea090",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(737),
+                            Id = "23804972-5065-4b85-9caa-51be82628385",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1909),
                             Description = "ASP.NET Core description",
                             Icon = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(738),
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1910),
                             Title = "ASP.NET Core",
                             UrlSlug = "ASP-NET-CORE"
                         },
                         new
                         {
-                            Id = "6ef0af10-810a-4d9c-aad7-b898b211cbab",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(742),
+                            Id = "28c01d56-b3c9-45ca-9185-4c0ba8ea90fd",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1913),
                             Description = "ASP.NET Blazor Details",
                             Icon = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(742),
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(1914),
                             Title = "ASP.NET Blazor",
                             UrlSlug = "ASP-NET-BLAZOR"
                         });
@@ -296,75 +308,75 @@ namespace AQBlog.Domain.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e624c553-ff33-4ab3-922d-e01f02e86c23",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(1797),
+                            Id = "7ee4294e-168b-4abc-9a2c-04db80ebe511",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(2942),
                             IsDeleted = false,
                             MasterCode = "TAGS",
                             MasterContent = "ASP.NET",
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2158)
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3303)
                         },
                         new
                         {
-                            Id = "2477d88a-7818-483f-8910-43114b28d4b7",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2169),
+                            Id = "e0428e9c-0a7e-49be-a08a-5e61442937db",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3313),
                             IsDeleted = false,
                             MasterCode = "TAGS",
                             MasterContent = "SQL",
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2170)
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3314)
                         },
                         new
                         {
-                            Id = "0e86582e-9bb2-4d2e-9ac1-8599d7360df9",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2174),
+                            Id = "f2279094-8efa-42d2-aad9-f4456451e018",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3322),
                             IsDeleted = false,
                             MasterCode = "TAGS",
                             MasterContent = "ASP.NET CORE",
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2175)
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3323)
                         },
                         new
                         {
-                            Id = "d6fae695-6ce1-4f30-a8d6-d142558b47ed",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2183),
+                            Id = "039da0a7-9a73-401e-99e8-3c1e22f9b3ef",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3326),
                             IsDeleted = false,
                             MasterCode = "TAGS",
                             MasterContent = "SQL",
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2184)
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3327)
                         },
                         new
                         {
-                            Id = "8d5984d7-e206-4628-acd7-25f20f595bce",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2187),
+                            Id = "befd70ba-562b-4899-b7c7-246509a8b8fd",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3330),
                             IsDeleted = false,
                             MasterCode = "TAGS",
                             MasterContent = "JavaScript",
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2188)
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3331)
                         },
                         new
                         {
-                            Id = "56b7aa8f-538c-4e9f-ba17-363781fc5e37",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2191),
+                            Id = "8c68a68a-cdb3-4d06-81eb-66fb5a13cd3b",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3334),
                             IsDeleted = false,
                             MasterCode = "TAGS",
                             MasterContent = "Angular",
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2192)
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3335)
                         },
                         new
                         {
-                            Id = "d732b556-0cab-4753-8b9a-87a1e74208b0",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2195),
+                            Id = "1c874e59-490f-440d-966e-03da42293c30",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3337),
                             IsDeleted = false,
                             MasterCode = "TAGS",
                             MasterContent = "MongoDb",
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2196)
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3338)
                         },
                         new
                         {
-                            Id = "479c057a-967a-4db3-b7c7-acd5f9bed53c",
-                            CreatedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2199),
+                            Id = "1ce45958-9a39-4dd7-978b-d773615b46b7",
+                            CreatedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3341),
                             IsDeleted = false,
                             MasterCode = "TAGS",
                             MasterContent = "ASP.NET Blazor",
-                            ModifiedOn = new DateTime(2021, 8, 14, 16, 42, 38, 956, DateTimeKind.Utc).AddTicks(2200)
+                            ModifiedOn = new DateTime(2021, 8, 20, 19, 9, 30, 406, DateTimeKind.Utc).AddTicks(3342)
                         });
                 });
 
@@ -395,11 +407,11 @@ namespace AQBlog.Domain.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "032e39d9-fe32-46c5-aa7f-2bb70413240d",
+                            Id = "175b5eba-6831-40e6-9da1-553aeb9d1679",
                             IsDeleted = false,
-                            Password = "Bqwq12Laz1VTk4HK95C99Q==",
-                            SaltPassword = "e39b5a70d4f24f789ada1a5227a18720",
-                            UserName = "sarfaraz.naushad@gmail.com"
+                            Password = "0XA7lWZfyJvKQcIWY2K30A==",
+                            SaltPassword = "e12f840e335f428aad41986ba96b0470",
+                            UserName = "xyz@username.com"
                         });
                 });
 #pragma warning restore 612, 618

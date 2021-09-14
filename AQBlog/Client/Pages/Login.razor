@@ -1,14 +1,18 @@
 ﻿@page "/login"
 @layout LoginLayout
+@using AQBlog.Shared
+@using System.Text.Json;
+@inject IAuthenticationService authService
+@inject NavigationManager navigationManager
 
 
 <MudText Typo="Typo.h4" GutterBottom="true">Sign In</MudText>
 
 <MudText>Don't have an account? <MudLink Href="/pages/authentication/register">Sign Up</MudLink></MudText>
 
-<MudTextField T="string" Value="@("staff@mudblazor.com")" Label="E-mail" Variant="Variant.Outlined" Class="my-6"></MudTextField>
+<MudTextField T="string" @bind-Value="@model.UserName" Label="E-mail" Variant="Variant.Outlined" Class="my-6"></MudTextField>
 
-<MudTextField @bind-Value="@Password" Label="Password" Variant="Variant.Outlined" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" />
+<MudTextField @bind-Value="@model.Password" Label="Password" Variant="Variant.Outlined" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" />
 
 <div Class="d-flex justify-space-between align-center">
     <MudCheckBox T="bool" Label="Remember me?" Color="Color.Primary" Class="ml-n1 my-3"></MudCheckBox>
@@ -16,10 +20,12 @@
 </div>
 
 
-<MudButton Variant="Variant.Filled" Color="Color.Primary" Link="/auth/dashboard" Size="Size.Large" FullWidth="true">Sign In</MudButton>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="LoginUser" Size="Size.Large" FullWidth="true">Sign In</MudButton>
 
 @code {
-    string Password { get; set; } = "BMWvBPJXZu";
+    private UserLoginMetaData model = new UserLoginMetaData();
+
+
 
     bool PasswordVisibility;
     InputType PasswordInput = InputType.Password;
@@ -40,4 +46,23 @@
             PasswordInput = InputType.Text;
         }
     }
+
+
+    async Task LoginUser()
+    {
+        try
+        {
+            var user = this.model;
+            await authService.Login(user.UserName, user.Password);
+            var resturnUrl = navigationManager.QueryString("returnUrl") ?? "/auth/dashboard";
+            navigationManager.NavigateTo(resturnUrl);
+        }
+        catch(Exception ex)
+        {
+            StateHasChanged();
+        }
+
+    }
+
+
 }

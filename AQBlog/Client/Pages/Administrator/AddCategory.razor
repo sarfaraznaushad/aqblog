@@ -1,0 +1,70 @@
+﻿@page "/auth/addcategory"
+@page "/auth/editcategory/{id}"
+@layout MainLayout
+@inject ICategoryService categoryService
+@inject NavigationManager navigtionManager
+
+@using AQBlog.Shared
+
+<MudPaper Class="d-flex justify-center">
+    <EditForm Model="@category" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+
+        <MudText Typo="Typo.h6" Class="p-4">Add Master</MudText>
+        <MudDivider />
+        <MudCardContent>
+            <MudTextField Class="pt-4" Label="Category" Margin="Margin.Dense"
+                          @bind-Value="category.CategoryName" Variant="Variant.Outlined" For="@(() => category.CategoryName)" />
+
+            <MudSelect Class="pt-4" T="String" Label="Parent Category" Margin="Margin.Dense" @bind-Value="category.ParentCategoryId" Strict="true" Variant="Variant.Outlined" For="@(() => category.ParentCategoryId)">
+                @foreach (var ms in parentCategory.ToList())
+                {
+                    <MudSelectItem Value="@ms.Id">@ms.Text</MudSelectItem>
+                }
+            </MudSelect>
+            <MudTextField Class="pt-4" Label="Slug" Margin="Margin.Dense"
+                          @bind-Value="category.Slug" Variant="Variant.Outlined" For="@(() => category.Slug)" />
+
+            <MudTextField Class="pt-4" Label="Icon" Margin="Margin.Dense"
+                          @bind-Value="category.Icon" Variant="Variant.Outlined" For="@(() => category.Icon)" />
+
+            <MudTextField Class="pt-4" Label="Description" Margin="Margin.Dense" Lines="3"
+                          @bind-Value="category.Description" Variant="Variant.Outlined" For="@(() => category.Description)" />
+
+            <MudCheckBox @bind-Checked="@category.IsActive" Color="Color.Primary">Active</MudCheckBox>
+
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Save</MudButton>
+        </MudCardActions>
+
+
+    </EditForm>
+</MudPaper>
+
+
+@code {
+    [Parameter]
+    public String id { get; set; }
+
+    private List<DropdownMetaData> parentCategory = new List<DropdownMetaData>();
+    private AddCategoryMetaData category = new AddCategoryMetaData();
+
+    protected override async Task OnInitializedAsync()
+    {
+        parentCategory = await categoryService.GetDropdownCategory();
+        category.IsActive = true;
+
+        if (!string.IsNullOrEmpty(id))
+        {
+            category = await this.categoryService.GetCategoryById(id);
+        }
+    }
+
+    private async Task OnValidSubmit()
+    {
+        await categoryService.AddCategory(category);
+        navigtionManager.NavigateTo("/auth/category");
+    }
+
+}

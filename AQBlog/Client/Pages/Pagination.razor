@@ -1,0 +1,130 @@
+﻿@using AQBlog.Shared
+@using System.Text
+<style>
+    .pagingDiv {
+        background: #f2f2f2;
+        display: flex;
+    }
+
+        .pagingDiv > a {
+            display: inline-block;
+            padding: 0px 9px;
+            margin-right: 4px;
+            border-radius: 3px;
+            border: solid 1px #c0c0c0;
+            background: #e9e9e9;
+            box-shadow: inset 0px 1px 0px rgba(255,255,255, .8), 0px 1px 3px rgba(0,0,0, .1);
+            font-size: .875em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #717171;
+            text-shadow: 0px 1px 0px rgba(255,255,255, 1);
+        }
+
+            .pagingDiv > a:hover {
+                background: #fefefe;
+                background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#f0f0f0));
+                background: -moz-linear-gradient(0% 0% 270deg,#FEFEFE, #f0f0f0);
+            }
+
+            .pagingDiv > a.active {
+                border: none;
+                background: #616161;
+                box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);
+                color: #f0f0f0;
+                text-shadow: 0px 0px 3px rgba(0,0,0, .5);
+            }
+</style>
+@((MarkupString)CreatePaging()) 
+
+@code {
+
+    [Parameter]
+    public PageInfo pageInfo { get; set; }
+
+    [Parameter]
+    public bool PageClassesEnabled { get; set; }
+
+    [Parameter]
+    public string PageClass { get; set; }
+
+    [Parameter]
+    public string PageClassSelected { get; set; }
+
+    public string CreatePaging()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("<div>");
+        string anchorInnerHtml = "";
+
+        for (int i = 1;i <= pageInfo.TotalPages; i++)
+        {
+            StringBuilder tag = new StringBuilder();
+            tag.Append("<a ");
+
+            anchorInnerHtml = AnchorInnerHtml(i, pageInfo);
+            if (anchorInnerHtml == "..")
+                tag.Append("href='#'");
+            else if (i == 1)
+                tag.Append("href='/'");
+            else
+                tag.Append("href='/"+i+"'");
+
+           
+
+            if (PageClassesEnabled)
+            {
+
+                if(pageInfo.CurrentPage == i)
+                {
+                    var str = $" class='{PageClass} {PageClassSelected}'";
+                    tag.Append(str);
+                }
+                else
+                {
+                    tag.Append(" class='" + PageClass+"'");
+                }
+            }
+
+            tag.Append($" >{i}</a>");
+            sb.Append(tag.ToString());
+        }
+
+        sb.Append("</div>");
+        var st = sb.ToString();
+        return sb.ToString();
+    }
+
+    public static string AnchorInnerHtml(int i, PageInfo pagingInfo)
+    {
+        string anchorInnerHtml = "";
+        if (pagingInfo.TotalPages <= 10)
+            anchorInnerHtml = i.ToString();
+        else
+        {
+            if (pagingInfo.CurrentPage <= 5)
+            {
+                if ((i <= 8) || (i == pagingInfo.TotalPages))
+                    anchorInnerHtml = i.ToString();
+                else if (i == pagingInfo.TotalPages - 1)
+                    anchorInnerHtml = "..";
+            }
+            else if ((pagingInfo.CurrentPage > 5) && (pagingInfo.TotalPages - pagingInfo.CurrentPage >= 5))
+            {
+                if ((i == 1) || (i == pagingInfo.TotalPages) || ((pagingInfo.CurrentPage - i >= -3) && (pagingInfo.CurrentPage - i <= 3)))
+                    anchorInnerHtml = i.ToString();
+                else if ((i == pagingInfo.CurrentPage - 4) || (i == pagingInfo.CurrentPage + 4))
+                    anchorInnerHtml = "..";
+            }
+            else if (pagingInfo.TotalPages - pagingInfo.CurrentPage < 5)
+            {
+                if ((i == 1) || (pagingInfo.TotalPages - i <= 7))
+                    anchorInnerHtml = i.ToString();
+                else if (pagingInfo.TotalPages - i == 8)
+                    anchorInnerHtml = "..";
+            }
+        }
+        return anchorInnerHtml;
+    }
+
+}

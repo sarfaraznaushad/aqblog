@@ -1,0 +1,21 @@
+﻿@using AQBlog.Shared
+<MudPaper Elevation="0" >
+    <MudLink Href="@(Blog.Id+'/'+@Blog.Slug)" Typo="Typo.h6">@Blog.Title</MudLink>
+    
+    <div class="w-100">
+        <MudText Typo="Typo.subtitle2" Align="Align.Start">@Blog.Subject</MudText>
+    </div>
+    <div class="text-right">
+        <MudText Typo="Typo.caption" Align="Align.End"> @Blog.PublishDate.ToString("dddd, dd MMMM yyyy")</MudText>
+    </div>
+   
+   
+</MudPaper>
+
+
+@code {
+    // Demonstrates how a parent component can supply parameters  
+    [Parameter]
+    public BlogFrontDetailMetaData Blog { get; set; }
+}
+

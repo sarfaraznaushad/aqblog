@@ -1,17 +1,207 @@
 ﻿@layout MainLayout
 @page "/auth/addblog"
+@page "/auth/editblog/{id}"
 
-<h3>AddBlog</h3>
+@using AQBlog.Shared
+@inject IJSRuntime JSRuntime
+@inject ICategoryService categoryService
+@inject NavigationManager navigtionManager
+@inject IBlogService blogService
+@inject IMasterService masterService
 
-<MudTextField T="string" Label="Title" Variant="Variant.Outlined" Class="my-6"></MudTextField>
-<MudTextField T="string" Label="Subject" Variant="Variant.Outlined" Class="my-6"></MudTextField>
-<MudTextField T="string" Label="Category" Variant="Variant.Outlined" Class="my-6"></MudTextField>
-<MudTextField T="string" Label="Tags" Variant="Variant.Outlined" Class="my-6"></MudTextField>
-<MudTextField T="string" Label="Description" Variant="Variant.Outlined" Class="my-6"></MudTextField>
-<MudButton Variant="Variant.Filled" Color="Color.Primary" Link="/dashboard" Size="Size.Large" FullWidth="true">
-    Save
-</MudButton>
+<MudPaper Class="p-2">
+
+    <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+        <MudText Typo="Typo.h6" Class="p-4">Add Blog</MudText>
+        <MudDivider />
+        <MudCardContent>
+            <DataAnnotationsValidator />          
+            <MudTextField Class="pt-4" Label="Title" Margin="Margin.Dense"
+                          @bind-Value="@model.Title" Variant="Variant.Outlined" For="@(() => model.Title)" />
+            <MudTextField Class="pt-4" Label="Subject" Margin="Margin.Dense"
+                          @bind-Value="@model.Subject" Variant="Variant.Outlined" For="@(() => model.Subject)" />
+
+            <MudSelect Class="pt-4" T="String" Label="Category" Margin="Margin.Dense" @bind-Value="@model.CategoryId"
+                       Strict="true" Variant="Variant.Outlined" For="@(() => model.CategoryId)">
+                @foreach (var ms in categories.ToList())
+                {
+                    <MudSelectItem Value="@ms.Id">@ms.Text</MudSelectItem>
+                }
+            </MudSelect>
+
+        
+            <MudSelect Class="pt-4" Label="Tags" T="String" Margin="Margin.Dense" MultiSelection="true"
+                        Variant="Variant.Outlined" @bind-SelectedValues="@selectedTags">
+                @foreach (var tag in tagDetails)
+                {
+                    <MudSelectItem T="String" Value="@tag.Key">@tag.Value</MudSelectItem>
+                }
+            </MudSelect>
+
+            @if (EditorEnabled)
+            {
+        <div id="toolbar">
+            <span class="ql-formats">
+                <select class="ql-font">
+                    <option selected=""></option>
+                    <option value="serif"></option>
+                    <option value="monospace"></option>
+                </select>
+                <select class="ql-size">
+                    <option value="small"></option>
+                    <option selected=""></option>
+                    <option value="large"></option>
+                    <option value="huge"></option>
+                </select>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+                <button class="ql-strike"></button>
+            </span>
+            <span class="ql-formats">
+                <select class="ql-color"></select>
+                <select class="ql-background"></select>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-list" value="ordered"></button>
+                <button class="ql-list" value="bullet"></button>
+                <button class="ql-indent" value="-1"></button>
+                <button class="ql-indent" value="+1"></button>
+                <select class="ql-align">
+                    <option selected=""></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                </select>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-link"></button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-code-block"></button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-image"></button>
+            </span>
+                
+        </div>
+            }
+            <div @ref="@divEditorElement" />
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Save</MudButton>
+        </MudCardActions>
+    </EditForm>
+</MudPaper>
 
 @code {
+    [Parameter]
+    public String id { get; set; }
+
+    public List<MasterMetaData> Config { get; set; }
+    private AddBlogMetaData model = new AddBlogMetaData();
+
+    private List<DropdownMetaData> categories = new List<DropdownMetaData>();
+    private List<MasterMetaData> tags = new List<MasterMetaData>();
+
+    HashSet<KeyValuePair<string, string>> tagDetails { get; set; } = new HashSet<KeyValuePair<string, string>>();
+
+    private HashSet<string> selectedTags { get; set; } = new HashSet<string>();
+
+
+
+    private string strSavedContent = "";
+    private ElementReference divEditorElement;
+    private string EditorContent;
+    private string EditorHTMLContent;
+    private bool EditorEnabled = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await categoryService.GetDropdownCategory();
+        tags = await masterService.GetMasterByCode("TAGS");
+
+        foreach (var tag in tags)
+        {
+            tagDetails.Add(new KeyValuePair<string, string>(tag.Title, tag.Title));
+        }
+
+        if (!string.IsNullOrEmpty(id))
+        {
+            var blogDetail = await this.blogService.GetBlogById(id);
+            if (blogDetail != null)
+            {
+                model.Title = blogDetail.Title;
+                model.Description = blogDetail.Description;
+                model.Subject = blogDetail.Subject;
+                model.Tags = blogDetail.Tags;
+                model.UrlSlug = blogDetail.UrlSlug;
+                model.IsPublished = blogDetail.IsPublished;
+                model.Id = blogDetail.Id;
+                model.CategoryId = blogDetail.CategoryId;
+
+                selectedTags = new HashSet<string>(model.Tags);
+
+                await LoadQuillContent(model.Description);
+                
+            }
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            await JSRuntime.InvokeAsync<string>(
+                "QuillFunctions.createQuill", divEditorElement);
+        }
+
+
+    }
+
+    private async Task OnValidSubmit()
+    {
+        await GetHTML();
+        var detail = selectedTags.ToList();
+        model.Tags = new List<string>();
+        foreach (var d in detail)
+        {
+            model.Tags.Add(d);
+        }
+        model.Description = EditorHTMLContent;
+        await blogService.AddBlog(model);
+        navigtionManager.NavigateTo("/auth/manageblog");
+    }
+
+    async Task GetText()
+    {
+        EditorHTMLContent = "";
+        EditorContent = await JSRuntime.InvokeAsync<string>(
+            "QuillFunctions.getQuillText", divEditorElement);
+    }
+
+    async Task GetHTML()
+    {
+        EditorContent = "";
+        EditorHTMLContent = await JSRuntime.InvokeAsync<string>(
+            "QuillFunctions.getQuillHTML", divEditorElement);
+    }
+
+    async Task GetEditorContent()
+    {
+        EditorHTMLContent = "";
+        EditorContent = await JSRuntime.InvokeAsync<string>(
+            "QuillFunctions.getQuillContent", divEditorElement);
+    }
+
+    async Task LoadQuillContent(string Content)
+    {
+
+        var QuillDelta = await JSRuntime.InvokeAsync<object>(
+          "QuillFunctions.loadQuillContent", divEditorElement, Content);
+    }
 
 }

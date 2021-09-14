@@ -1,0 +1,65 @@
+﻿
+@page "/auth/addmaster"
+@page "/auth/editmaster/{id}"
+@using AQBlog.Shared
+@using System.Text.RegularExpressions
+@using System.ComponentModel.DataAnnotations
+
+@inject IMasterService masterService
+@inject NavigationManager navigationManager
+
+@layout MainLayout
+
+<MudPaper Class="d-flex justify-center">
+    
+        <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+
+            <MudText Typo="Typo.h6" Class="p-4">Add Master</MudText>
+            <MudDivider />
+            <MudCardContent>
+                <MudSelect Class="pt-4" T="String" Label="Master Code" Margin="Margin.Dense" @bind-Value="model.MasterCode" Strict="true" Variant="Variant.Outlined" For="@(() => model.MasterCode)">
+                    @foreach (var ms in master.ToList())
+                    {
+                        <MudSelectItem Value="@ms.MasterCode">@ms.Title</MudSelectItem>
+                    }
+                </MudSelect>
+                <MudTextField Class="pt-4" Label="Master Content" Margin="Margin.Dense"
+                              @bind-Value="model.Content" Variant="Variant.Outlined" For="@(() => model.Content)" />
+                <MudCheckBox @bind-Checked="@model.IsActive" Color="Color.Primary">Active</MudCheckBox>
+
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Save</MudButton>
+            </MudCardActions>
+
+
+        </EditForm>
+</MudPaper>
+
+@code {
+
+    [Parameter]
+    public String id { get; set; }
+
+    AddMasterMetaData model = new AddMasterMetaData();
+    private List<MasterDetailMetaData> master = new List<MasterDetailMetaData>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        model.IsActive = true;
+        master = await masterService.GetMaster();
+        if (!string.IsNullOrEmpty(id))
+        {
+            model = await masterService.GetMasterById(id);
+        }
+    }
+
+
+    private async Task OnValidSubmit()
+    {
+        var detail = model;
+        await masterService.AddMaster(model);
+        navigationManager.NavigateTo("/auth/master");
+    }
+}

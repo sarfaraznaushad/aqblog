@@ -1,6 +1,6 @@
 ﻿@using AQBlog.Shared
 @using System.Threading
-@inject HttpClient Http
+@inject IFrontService frontService
 
 <MudText Typo="Typo.h5"> Categories</MudText>
 <MudDivider Class="mt-2" />
@@ -13,7 +13,7 @@ else
     <MudNavMenu>
         @foreach (var cat in categories)
         {
-            <MudNavLink Href="@cat.Slug">
+            <MudNavLink Href="@($"/category/{cat.Id}/{cat.Slug}")">
                 <MudText Typo="Typo.subtitle1">@cat.CategoryName </MudText>
             </MudNavLink>
             <MudDivider />
@@ -23,11 +23,11 @@ else
 }
 
 @code {
-    private CategoryMetaData[] categories;
+    private List<CategoryMetaData> categories;
 
     protected override async Task OnInitializedAsync()
     {
-        var details = await Http.GetFromJsonAsync<CategoryMetaData[]>("blog");
+        var details = await frontService.GetCategory();
         categories = details;
     }
 }

@@ -137,7 +137,7 @@ namespace AQBlog.Domain.Migrations
             migrationBuilder.InsertData(
                 table: "UserDetail",
                 columns: new[] { "Id", "IsDeleted", "Password", "SaltPassword", "UserName" },
-                values: new object[] { "032e39d9-fe32-46c5-aa7f-2bb70413240d", false, "Bqwq12Laz1VTk4HK95C99Q==", "e39b5a70d4f24f789ada1a5227a18720", "sarfaraz.naushad@gmail.com" });
+                values: new object[] { "032e39d9-fe32-46c5-aa7f-2bb70413240d", false, "Bqwq12Laz1VTk4HK95C99Q==", "e39b5a70d4f24f789ada1a5227a18720", "xyz@username.com" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

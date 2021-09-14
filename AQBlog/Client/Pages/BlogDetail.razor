@@ -1,0 +1,44 @@
+﻿@page "/{blogId}/{slug}"
+@using AQBlog.Shared
+@inject IFrontService frontService
+
+@if (blog == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MudPaper Elevation="0">
+        <MudText Href="@blog.Slug" Typo="Typo.h6">@blog.Title</MudText>
+        <MudPaper Elevation="0">
+            @blog.Subject
+        </MudPaper>
+        <div class="w-100 text-right">
+            <MudText Typo="Typo.caption" Align="Align.End" Class="mb-2"> @blog.PublishDate.ToString("dddd, dd MMMM yyyy")</MudText>
+        </div>
+        
+        <MudDivider></MudDivider>
+
+    </MudPaper>
+    <div class="ql-snow">
+        <div class="ql-editor">
+            @((MarkupString)blog.Description)
+        </div>
+    </div>
+ 
+}
+
+@code {
+    [Parameter]
+    public String blogId { get; set; }
+    [Parameter]
+    public String slug { get; set; }
+
+
+    BlogFrontViewMetaData blog;
+
+    protected override async Task OnInitializedAsync()
+    {
+        blog = await frontService.FnGetBlogBySlug(slug);
+    }
+}

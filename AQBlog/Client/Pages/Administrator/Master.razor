@@ -1,0 +1,121 @@
+﻿@page "/auth/master"
+@layout MainLayout
+@inject NavigationManager navigationManager
+@inject IMasterService masterService
+@using AQBlog.Shared
+
+<MudPaper Width="100%" Class="d-flex flex-row-reverse py-2 px-1">
+    <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" OnClick="AddMaster">Add</MudButton>
+</MudPaper>
+
+
+    @if (masterCode != "")
+    {
+        <div class="p-2">
+            <MudTable ServerData="@(new Func<TableState, Task<TableData<MasterMetaData>>>(GetMasterDetail))"
+                      Dense="true" Hover="true" @ref="table">
+                <ToolBarContent>
+                    <MudText Typo="Typo.h6">Master</MudText>
+                    <MudSpacer />
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudSelect Class="pt-4" T="String" Label="Master Code" Margin="Margin.Dense" @bind-Value="masterCode" Strict="true" Variant="Variant.Outlined">
+                            @foreach (var ms in master.ToList())
+                            {
+                                <MudSelectItem Value="@ms.MasterCode">@ms.Title</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                    <MudSpacer />
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder="Search" Adornment="Adornment.Start"
+                                      AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                    </MudItem>
+                </ToolBarContent>
+                <HeaderContent>
+                    <MudTh><MudTableSortLabel SortLabel="nr_field" T="MasterMetaData">Title</MudTableSortLabel></MudTh>
+                    <MudTh><MudTableSortLabel SortLabel="id" T="MasterMetaData">Action</MudTableSortLabel></MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Title" Style="width:50%">@context.Title</MudTd>                    
+                    <MudTd DataLabel="Id" Style="width:20%">
+                        <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="(() => Edit(context))" />
+                        <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" />
+                    </MudTd>
+                </RowTemplate>
+                <NoRecordsContent>
+                    <MudText>No matching records found</MudText>
+                </NoRecordsContent>
+                <LoadingContent>
+                    <MudText>Loading...</MudText>
+                </LoadingContent>
+                <PagerContent>
+                    <MudTablePager />
+                </PagerContent>
+            </MudTable>
+        </div>
+    }
+
+
+
+@code {
+    private string masterCode = ""; 
+    private List<MasterDetailMetaData> master = new List<MasterDetailMetaData>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var masterDetail = await masterService.GetMaster();
+        master = masterDetail.ToList();
+
+        if (master.Count > 0)
+        {
+            masterCode = master.First().MasterCode;
+        }
+    }
+
+    private IEnumerable<MasterMetaData> pagedData;
+    private MudTable<MasterMetaData> table;
+
+    private int totalItems;
+    private string searchString = null;
+
+    private async Task<TableData<MasterMetaData>> GetMasterDetail(TableState state)
+    {
+        IEnumerable<MasterMetaData> data = await masterService.GetMasterByCode(masterCode);
+
+        data = data.Where(ele =>
+        {
+            if (string.IsNullOrEmpty(searchString))
+                return true;
+
+            if (ele.Title.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                return true;
+            if ($"{ele.Title}".Contains(searchString))
+                return true;
+
+            return false;
+        }).ToArray();
+
+        totalItems = data.Count();
+
+        pagedData = data.Skip(state.Page * state.PageSize).Take(state.PageSize).ToArray();
+        return new TableData<MasterMetaData>() { TotalItems = totalItems, Items = pagedData };
+    }
+
+
+    private void OnSearch(string text)
+    {
+        searchString = text;
+        table.ReloadServerData();
+    }
+
+    private void Edit(MasterMetaData data)
+    {
+        navigationManager.NavigateTo("/auth/editmaster/" + data.Id);
+    }
+
+
+    private void AddMaster()
+    {
+        navigationManager.NavigateTo("/auth/addmaster");
+    }
+}

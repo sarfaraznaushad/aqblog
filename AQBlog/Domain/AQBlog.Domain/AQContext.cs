@@ -21,13 +21,13 @@ namespace AQBlog.Domain
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var passwordSalt = Encryption.RandomString();
-            var password = Encryption.Encrypt("Admin@123", passwordSalt);
+            var password = Encryption.Encrypt("VYB90$%u", passwordSalt);
             modelBuilder.Entity<UserDetail>().HasData(new UserDetail()
             {
                 IsDeleted = false,
                 SaltPassword = passwordSalt,
                 Password = password,
-                UserName = "sarfaraz.naushad@gmail.com"
+                UserName = "xyz@username.com"
             });
 
             modelBuilder.Entity<Category>().HasData(

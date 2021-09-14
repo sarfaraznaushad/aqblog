@@ -21,6 +21,7 @@ F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\AQBlog.Se
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\AQBlog.Server.Views.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\AQBlog.Server.Views.pdb
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\Humanizer.dll
+F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\Microsoft.AspNetCore.Components.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\Microsoft.AspNetCore.Components.Forms.dll
@@ -45,7 +46,6 @@ F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\Microsoft
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\Microsoft.JSInterop.WebAssembly.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\MudBlazor.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\MudBlazor.ThemeManager.dll
-F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\Newtonsoft.Json.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 F:\AlqubaTechBusiness\CRM\Blazor\aqblog\AQBlog\Server\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll

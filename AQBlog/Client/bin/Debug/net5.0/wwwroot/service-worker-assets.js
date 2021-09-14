@@ -13,7 +13,7 @@
       "url": "_content\/MudBlazor.ThemeManager\/MudBlazorThemeManager.css"
     },
     {
-      "hash": "sha256-QriRocqIg+ZXNb6vMr3UuKCdFa\/bhtZ6jgb4x7rRv4c=",
+      "hash": "sha256-mPURgjgHam6lX6NuZaqjnAGVua9ctQwFEeuGXnQU+ZM=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -809,19 +809,19 @@
       "url": "_framework\/dotnet.5.0.2.js"
     },
     {
-      "hash": "sha256-aWnsqs5vLLSLMWw5MRxxOIENpuD+hwNyWmMbwovQv2U=",
+      "hash": "sha256-d4\/9\/nN+Y9DCbawsFOOIyHQNzkIJfWrJBSk6A1t5Iss=",
       "url": "_framework\/AQBlog.Shared.dll"
     },
     {
-      "hash": "sha256-ZOoRV4rEuPNgtZzaS4A07tLwcSSy0sBo\/trgz3ZTkEk=",
+      "hash": "sha256-r38DGKrbza8BahstleqFL1lqtazQ0DUzrIXV1tjU+gU=",
       "url": "_framework\/AQBlog.Shared.pdb"
     },
     {
-      "hash": "sha256-m4w6jFg2ZNblfTrJCzX+sLbzQm14a1f2mY1naNssCn8=",
+      "hash": "sha256-fVxfAjqdAlMTLpS+vnCYcSPtUH\/YDm1iK80D6PxP7jE=",
       "url": "_framework\/AQBlog.Client.dll"
     },
     {
-      "hash": "sha256-lQKsbkOS2TwYh3lugricGjcoP4zGqLQuwAlADwrfKi0=",
+      "hash": "sha256-m26sJstT7sFkCAMqvWOd73c7iLqlfL5TsUZxLUblaeU=",
       "url": "_framework\/AQBlog.Client.pdb"
     },
     {
@@ -1621,7 +1621,7 @@
       "url": "_framework\/dotnet.5.0.2.js.gz"
     },
     {
-      "hash": "sha256-SKqgfM2V5zBYMmHcv5k0ghUlj+m+JTEr26qlJmmsD78=",
+      "hash": "sha256-x9ixiVprv4EMLDOHB8ryV+gypArM+5rtdSl8L+1VIgQ=",
       "url": "_framework\/AQBlog.Shared.dll.gz"
     },
     {
@@ -1629,7 +1629,19 @@
       "url": "01.jpeg"
     },
     {
-      "hash": "sha256-8aM9R9K90X6h+KPDW4OzrEh071mAs7dvAQxjBxAZQAc=",
+      "hash": "sha256-pJH1dlL0eDGx2fKwnSBh5RC0BLUw0oeUhIL\/AY0i6Tw=",
+      "url": "aq-logo.svg"
+    },
+    {
+      "hash": "sha256-9hZydF6IYt09bBJR0xIbqL6h5y\/gRnfVNidNiFBpapk=",
+      "url": "aqlogo.svg"
+    },
+    {
+      "hash": "sha256-gRwYyRKQkrC33qIr6ceiJKD\/Myo7PdOb2aJp9cukTQM=",
+      "url": "BlazorQuill.js"
+    },
+    {
+      "hash": "sha256-LtF96B7B2Adl3IJty+7bcfUhys\/lZO0jIGkmeDycxao=",
       "url": "css\/app.css"
     },
     {
@@ -1685,7 +1697,7 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-eBeigXReFhHkQPbxx5VBnowIt2SZMUYgKpnhouPRTnY=",
+      "hash": "sha256-Z9xVUzgAPp7RQrYcJpxkjAbHuxd\/2+EsyyieDLWfKRY=",
       "url": "index.html"
     },
     {
@@ -1693,9 +1705,13 @@
       "url": "logo.svg"
     },
     {
+      "hash": "sha256-gDPHOSjNOopXbcYsKKOVDmSSYd8Xex\/QL+kMP1mZeQw=",
+      "url": "main-header-logo.svg"
+    },
+    {
       "hash": "sha256-t0xksJ\/6q\/BbPHjobkTh\/rXoED069+Yh717SQZ7sW9E=",
       "url": "manifest.json"
     }
   ],
-  "version": "gZUrefhz"
+  "version": "R3pJmuBj"
 };

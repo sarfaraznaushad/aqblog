@@ -1,5 +1,92 @@
-﻿<h3>ManageCategory</h3>
+﻿@page "/auth/category"
+@using AQBlog.Shared
+@layout MainLayout
+@inject ICategoryService categoryService
+@inject NavigationManager navigationManager
+
+<MudPaper Width="100%" Class="d-flex flex-row-reverse py-2 px-1">
+    <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" OnClick="AddCategory">Add</MudButton>
+</MudPaper>
+<div class="p-2">
+    <MudTable ServerData="@(new Func<TableState, Task<TableData<CategoryMetaData>>>(GetCategory))"
+              Dense="true" Hover="true" @ref="table">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Category</MudText>
+            <MudSpacer />
+            <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder="Search" Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh><MudTableSortLabel SortLabel="nr_field" T="CategoryMetaData">Category</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortLabel="sign_field" T="CategoryMetaData">Slug</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortLabel="id" T="CategoryMetaData">Action</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="CategoryName" Style="width:50%">@context.CategoryName</MudTd>
+            <MudTd DataLabel="Slug" Style="width:30%">@context.Slug</MudTd>
+            <MudTd DataLabel="Id" Style="width:20%">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="(() => Edit(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small"  />
+            </MudTd>
+        </RowTemplate>
+        <NoRecordsContent>
+            <MudText>No matching records found</MudText>
+        </NoRecordsContent>
+        <LoadingContent>
+            <MudText>Loading...</MudText>
+        </LoadingContent>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</div>
+
 
 @code {
 
+    private IEnumerable<CategoryMetaData> pagedData;
+    private MudTable<CategoryMetaData> table;
+
+    private int totalItems;
+    private string searchString = null;
+
+    private async Task<TableData<CategoryMetaData>> GetCategory(TableState state)
+    {
+        IEnumerable<CategoryMetaData> data = await categoryService.GetCategory();
+
+        data = data.Where(ele =>
+        {
+            if (string.IsNullOrEmpty(searchString))
+                return true;
+
+            if (ele.CategoryName.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                return true;
+            if ($"{ele.CategoryName}".Contains(searchString))
+                return true;
+
+            return false;
+        }).ToArray();
+
+        totalItems = data.Count();
+
+        pagedData = data.Skip(state.Page * state.PageSize).Take(state.PageSize).ToArray();
+        return new TableData<CategoryMetaData>() { TotalItems = totalItems, Items = pagedData };
+    }
+
+
+    private void OnSearch(string text)
+    {
+        searchString = text;
+        table.ReloadServerData();
+    }
+
+    private void AddCategory()
+    {
+        navigationManager.NavigateTo("/auth/addcategory");
+    }
+
+    private void Edit(CategoryMetaData data)
+    {
+        navigationManager.NavigateTo("/auth/editcategory/"+data.Id);
+    }
 }

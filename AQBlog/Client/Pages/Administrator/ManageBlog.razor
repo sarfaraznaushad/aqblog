@@ -1,10 +1,143 @@
 ﻿@layout MainLayout
 @page "/auth/manageblog"
-<h3>ManageBlog</h3>
+@using AQBlog.Shared
+@inject IBlogService blogService
+@inject NavigationManager navigationManager
 
-<MudNavLink Href="/auth/addblog">
-    <MudText Typo="Typo.subtitle1">Add Blog </MudText>
-</MudNavLink>
+@inject IDialogService DialogService
+
+
+<MudPaper Width="100%" Class="d-flex flex-row-reverse py-2 px-1">
+    <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Add" Color="Color.Primary" OnClick="AddBlog">Add</MudButton>
+</MudPaper>
+<div class="p-2">
+    <MudTable ServerData="@(new Func<TableState, Task<TableData<MangeBlogMetaData>>>(GetBlog))"
+              Dense="true" Hover="true" @ref="table">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Blog</MudText>
+            <MudSpacer />
+            <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder="Search" Adornment="Adornment.Start"
+                          AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh><MudTableSortLabel SortLabel="Title" T="MangeBlogMetaData">Title</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortLabel="Published" T="MangeBlogMetaData">Status</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortLabel="id" T="MangeBlogMetaData">Action</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="CategoryName" Style="width:70%">@context.Title</MudTd>
+            <MudTd DataLabel="Status" Style="width:10%">
+                @{
+                    if (context.IsPublished)
+                    {
+                        <MudText>Published</MudText>
+                    }
+                    else
+                    {
+                        <MudText>Draft</MudText>
+                    }
+                }
+            </MudTd>
+            <MudTd DataLabel="Id" Style="width:20%">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small" OnClick="(() => Edit(context))" />
+                @{
+                    if (context.IsPublished)
+                    {
+                        <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small"  Title="Remove from publish" OnClick="(() => Published(context))" />
+                    }
+                    else
+                    {
+                        <MudIconButton Icon="@Icons.Material.Filled.Publish" Size="Size.Small" Title="Publish" OnClick="(() => Published(context))" />
+                    }
+                }
+
+            </MudTd>
+        </RowTemplate>
+        <NoRecordsContent>
+            <MudText>No matching records found</MudText>
+        </NoRecordsContent>
+        <LoadingContent>
+            <MudText>Loading...</MudText>
+        </LoadingContent>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</div>
+
 @code {
 
+    private IEnumerable<MangeBlogMetaData> pagedData;
+    private MudTable<MangeBlogMetaData> table;
+
+    private int totalItems;
+    private string searchString = null;
+
+    private async Task<TableData<MangeBlogMetaData>> GetBlog(TableState state)
+    {
+        IEnumerable<MangeBlogMetaData> data = await blogService.GetBlog();
+
+        data = data.Where(ele =>
+        {
+            if (string.IsNullOrEmpty(searchString))
+                return true;
+
+            if (ele.Title.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                return true;
+            if ($"{ele.Title}".Contains(searchString))
+                return true;
+
+            return false;
+        }).ToArray();
+
+        totalItems = data.Count();
+
+        pagedData = data.Skip(state.Page * state.PageSize).Take(state.PageSize).ToArray();
+        return new TableData<MangeBlogMetaData>() { TotalItems = totalItems, Items = pagedData };
+    }
+
+
+    private void OnSearch(string text)
+    {
+        searchString = text;
+        table.ReloadServerData();
+    }
+
+    private void AddBlog()
+    {
+        navigationManager.NavigateTo("/auth/addblog");
+    }
+
+    private void Edit(MangeBlogMetaData data)
+    {
+        navigationManager.NavigateTo("/auth/editblog/" + data.Id);
+    }
+
+    private async Task Published(MangeBlogMetaData blog)
+    {
+        var parameters = new DialogParameters();
+
+        if (blog.IsPublished)
+        {
+            parameters.Add("ContentText", "Are you sure you want to unpublish?");
+        }
+        else
+        {
+            parameters.Add("ContentText", "Are you sure you want to published?");
+        }
+
+        parameters.Add("ButtonText", "Yes");
+        parameters.Add("Color", Color.Success);
+
+        var resp = DialogService.Show<DialogConfirm>("Confirm", parameters);
+        var result = await resp.Result;
+        if (!result.Cancelled)
+        {
+            await blogService.Published(blog.Id);
+            blog.IsPublished = !blog.IsPublished;
+            StateHasChanged();
+        }
+        // resp.Close();
+        // await blogService.Published(blogId);
+    }
 }

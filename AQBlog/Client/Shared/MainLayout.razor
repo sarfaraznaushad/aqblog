@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@attribute [Authorize]
 
 <MudThemeProvider Theme="_themeManager.Theme" />
 <MudDialogProvider />
@@ -32,11 +33,10 @@
             <ActivatorContent>
                 <MudAvatar Image="01.jpeg" />
             </ActivatorContent>
-            <ChildContent>                
-                <Header  Class="mt-n2"  />
-                <MudDivider Class="mb-2" />
-                <MudListItem Text="Account" Icon="@Icons.Material.Outlined.Person" Href="/account" />
-                <MudListItem Text="Logout" Icon="@Icons.Material.Outlined.Login" Href="/login" />
+            <ChildContent>
+                <Header Class="mt-n2" />
+                <MudDivider Class="mb-2" />                
+                <MudListItem Text="Logout" Icon="@Icons.Material.Outlined.Login" Href="/logout" />
             </ChildContent>
         </MudMenu>
     </MudAppBar>
@@ -45,15 +45,15 @@
     </MudDrawer>
     <MudMainContent>
         @*<MudHidden Breakpoint="Breakpoint.SmAndDown">
-            <MudToolBar DisableGutters="true">
-                <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" OnClick="@((e) => DrawerToggle())" Class="ml-3" />
-                <MudBreadcrumbs Items="_items"></MudBreadcrumbs>
-                <MudToolBarSpacer />
-                <MudButton Variant="Variant.Text" Link="http://alqubatech.in/" Style="color:#594AE2;">AQ</MudButton>
-                <MudButton Variant="Variant.Text" Link="https://github.com/sarfaraznaushad/aqblog" Style="color:#424242;" Class="mr-3">Source Code</MudButton>
-            </MudToolBar>
-        </MudHidden>*@
-        <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+                <MudToolBar DisableGutters="true">
+                    <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" OnClick="@((e) => DrawerToggle())" Class="ml-3" />
+                    <MudBreadcrumbs Items="_items"></MudBreadcrumbs>
+                    <MudToolBarSpacer />
+                    <MudButton Variant="Variant.Text" Link="http://alqubatech.in/" Style="color:#594AE2;">AQ</MudButton>
+                    <MudButton Variant="Variant.Text" Link="https://github.com/sarfaraznaushad/aqblog" Style="color:#424242;" Class="mr-3">Source Code</MudButton>
+                </MudToolBar>
+            </MudHidden>*@
+        <MudContainer MaxWidth="MaxWidth.Large" Class="p-0">
             @Body
         </MudContainer>
     </MudMainContent>

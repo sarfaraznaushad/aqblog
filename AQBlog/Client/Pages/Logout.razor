@@ -1,0 +1,10 @@
+﻿@page "/logout"
+@layout MainLayout
+@inject IAuthenticationService authenticationService
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await authenticationService.Logout();
+    }
+}

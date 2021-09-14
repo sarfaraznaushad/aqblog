@@ -1,8 +1,11 @@
-﻿using System;
+﻿using AQBlog.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 
 namespace AQBlog.Domain.Infrastructure
 {
@@ -79,6 +82,12 @@ namespace AQBlog.Domain.Infrastructure
             if (lowerCase)
                 return builder.ToString().ToLower();
             return builder.ToString();
+        }
+
+        public static UserDetail UserDetail(List<Claim> claims)
+        {   
+            var userDetail = claims.Find(x => x.Type == ClaimTypes.UserData);
+            return JsonSerializer.Deserialize<UserDetail>(userDetail.Value);
         }
     }
 }
